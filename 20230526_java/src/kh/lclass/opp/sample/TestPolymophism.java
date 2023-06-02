@@ -30,7 +30,7 @@ public class TestPolymophism {
 		TestInterface bit2;
 //		TestInterface kh2;
 //		Kh kh2 = new Kh();
-		kh2.khSpecial();
+		//kh2.khSpecial();
 		kh2.method1();
 		
 		Driver ej = new DriverSub();
