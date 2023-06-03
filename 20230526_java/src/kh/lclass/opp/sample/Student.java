@@ -76,15 +76,11 @@ public /* abstract */ class Student extends Person {
 //	public abstract void setGrade(int grade); /*{
 //		this.grade = grade;
 //	}*/
-	public  void setGrade(int grade) {
+	public /* abstract */ void setGrade(int grade) {
 	this.grade = grade;
 }
 
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-	
-//	public static int getMaxcount() {
-//		return maxCount;
-//	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }
