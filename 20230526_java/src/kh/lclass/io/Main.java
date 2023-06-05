@@ -13,7 +13,9 @@ public class Main {
 //		} catch (UserException e) {
 //			e.printStackTrace();
 //		}
-		new TestFileIO().testFileReadData();
+//		new TestFileIO().testFileReadData();
+		new TestFileIO().testFileOutputStreamObject();
+		new TestFileIO().testFileInputStreamObject();
 		System.out.println("===main끝===");
 	}
 }

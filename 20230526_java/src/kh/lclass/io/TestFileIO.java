@@ -5,15 +5,87 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import kh.lclass.exception.UserException;
+import kh.lclass.opp.sample.Person;
 
 public class TestFileIO {
+	public void testFileOutputStreamObject() {
+		// 파일에 사람들 자료를 저장함.
+		Person p1 = new Person("홍길동", 23, '남', 5);
+		Person p2 = new Person("영희", 27, 'F', 2);
+		
+		String filePath="D:/data2/test/aaa.txt";
+		FileOutputStream fos = null;	// 기반스트림
+		ObjectOutputStream oos = null;	//보조스트림
+		try {
+			fos = new FileOutputStream(filePath);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(p1);
+			oos.writeObject(p2);
+			oos.flush();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(fos != null) fos.close();
+				if(oos != null) oos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public void testFileInputStreamObject() {
+		String filePath="D:/data2/test/aaa.txt";
+		FileInputStream ios = null;	// 기반스트림
+		ObjectInputStream ois = null;	//보조스트림
+		try {
+			ios = new FileInputStream(filePath);
+			ois = new ObjectInputStream(ios);
+			Object a = null;
+			if((a = ois.readObject()) instanceof Person) {
+				Person p = (Person)a;
+				System.out.println(p);
+			}
+			if((a = ois.readObject()) instanceof Person) {
+				Person p = (Person)a;
+				System.out.println(p);
+			}
+//			if(ois.readObject() instanceof Person) {
+//				Person a = (Person)(ois.readObject());
+//				//Person b = (Person)(ois.readObject());
+//				System.out.println(a);
+//				//System.out.println(b);
+//			}
+//			Person a = (Person)(ois.readObject());
+//			Person b = (Person)(ois.readObject());
+//			System.out.println(a);
+//			System.out.println(b);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ois != null) ois.close();
+				if(ios != null) ios.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	public void testRamda() throws UserException {
 		int[] arr = {2,3,4};
 		int[] arr2 = new int[] {2,3,4};
