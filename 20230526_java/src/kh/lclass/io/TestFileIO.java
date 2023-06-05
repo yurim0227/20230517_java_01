@@ -1,6 +1,7 @@
 package kh.lclass.io;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,8 +22,23 @@ public class TestFileIO {
 		}
 		if(arr.length >2) {
 			// No exception of type UserException can be thrown; an exception type must be a subclass of Throwable
+			//throw new UserException();
 			throw new UserException("배열의 크기는 2보다 크면 안됨. 줄여주세요.");
 			// 오류 발생하고 죽어버림.
+		}
+	}
+	public void testFileReadData() {
+		String filePath="D:/data2/test/aaa.txt";
+		try(DataInputStream dis = new DataInputStream(new FileInputStream(filePath));){
+			long temp = 0L;
+			while((temp=dis.readLong()) != 0) {
+				System.out.println(String.valueOf(temp));
+			}
+			// F2 - quick fix 사용 1. try catch 신중하게 잘 써야함. 2. unimplement method add
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	public void testFileRead3() {
