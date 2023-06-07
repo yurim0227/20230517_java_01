@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class TestAway {
 	//	필드에서 초기화 안 해주면 JVM이 대신 해줌
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String[] strArr = new String[3];
 		strArr[0] = "apple";
 		strArr[1] = "banana";
