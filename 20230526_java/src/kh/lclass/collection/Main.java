@@ -18,5 +18,7 @@ public class Main {
 //		str = tc.testGeneric(new Car(300), "aaa");
 		str = tc.testGeneric(2222L, "aaa");
 		System.out.println(str);
+		tc.testHashMap();
+		tc.testHashSet();
 	}
 }
