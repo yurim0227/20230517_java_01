@@ -27,6 +27,8 @@ public class TcpServer {
 			// 2. 서버용 소켓 객체 생성
 			ss = new ServerSocket(port);
 			//scList = new ArrayList<Socket>();
+			System.out.println("서버(나의) IP:"+ss.getInetAddress().toString());	// 0.0.0.0/0.0.0.0
+			System.out.println("서버(나의) 포트:"+ss.getLocalPort());
 			
 			while(true) {
 				System.out.println("클라이언트 접속 대기 중.......");
@@ -34,8 +36,10 @@ public class TcpServer {
 				// 4.접속 요청이 오면 요청 수락 후 해당 클라이언트에 대한 소켓 객체 생성
 				sc = ss.accept();
 				//scList.add(ss.accept());
-				System.out.println("클라이언트 접속됨:"+sc.getLocalPort());
-				System.out.println("클라이언트 접속됨:"+sc.getPort());
+				//System.out.println("클라이언트 접속됨:"+sc.getPort());
+				System.out.println("서버(나의) 포트:"+sc.getLocalPort());	// 9901
+				System.out.println("클라이언트 Port:"+sc.getPort());	// 자동바뀜
+				System.out.println("클라이언트 IP:"+sc.getInetAddress().toString());	// 127.0.0.1
 				
 				// 5.연결된 클라이언트와 입출력 스트림 생성
 				in = sc.getInputStream();
