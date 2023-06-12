@@ -1,12 +1,12 @@
 package kh.lclass;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 public class TestClient_0612 {
@@ -15,7 +15,7 @@ public class TestClient_0612 {
 		InputStream is = null;
 		OutputStream os = null;
 		BufferedReader br = null;
-		PrintWriter pw = null;
+		BufferedWriter bw = null;
 		
 		BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -25,14 +25,14 @@ public class TestClient_0612 {
 			is = socket.getInputStream();
 			os = socket.getOutputStream();
 			br = new BufferedReader(new InputStreamReader(is));
-			pw = new PrintWriter(new OutputStreamWriter(os));
+			bw = new BufferedWriter(new OutputStreamWriter(os));
 			
 			String sendMsg = null;
 			System.out.print("클라이언트로부터 보내는 메시지: ");
 			sendMsg = stdIn.readLine();
-				
-			pw.println(sendMsg);
-			pw.flush();
+			
+			bw.write(sendMsg + "\n");
+			bw.flush();
 				
 			String receivedMsg = br.readLine();
 			System.out.println("서버로부터 받은 메시지: "+ receivedMsg);
@@ -40,7 +40,7 @@ public class TestClient_0612 {
 		} finally {
 			try {
 				if(stdIn!=null) stdIn.close();
-				if(pw!=null) pw.close();
+				if(bw!=null) bw.close();
 				if(br!=null) br.close();
 				if(os!=null) os.close();
 				if(is!=null) is.close();
