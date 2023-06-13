@@ -16,8 +16,8 @@ public class TcpClient {
 	
 	public void testTcpClient(/* String ip, int port */String serverIp, int serverPort) {
 		Socket socket = null;
-//		InputStream in = null;
-//		OutputStream out = null;
+		InputStream in = null;
+		OutputStream out = null;
 		BufferedReader br = null;
 		//BufferedWriter wr = null;
 		PrintWriter pw = null;
@@ -34,21 +34,21 @@ public class TcpClient {
 			//socket = new Socket(ip, port);
 			socket = new Socket(serverIp, serverPort);
 			//System.out.println("서버에 접속 성공");
-			System.out.println("나의 Port "+ socket.getLocalPort());
 			System.out.println("서버에 포트 "+ socket.getPort());
+			System.out.println("나의 Port "+ socket.getLocalPort());
 			
 //			// 5.연결된 클라이언트와 입출력 스트림 생성
-//			in = socket.getInputStream();
-//			out = socket.getOutputStream();
+			in = socket.getInputStream();
+			out = socket.getOutputStream();
 //			// 6.보조 스트림을 통해 성능 개선
-//			br = new BufferedReader(new InputStreamReader(in));
+			br = new BufferedReader(new InputStreamReader(in));
 //			//wr = new BufferedWriter(new OutputStreamWriter(out));
-//			pw = new PrintWriter(new OutputStreamWriter(out));
+			pw = new PrintWriter(new OutputStreamWriter(out));
 			
 			// 2.연결된 클라이언트와 입출력 스트림 생성
 			// 3.보조 스트림을 통해 성능 개선
-			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+//			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 			
 			String sendMsg = null;
 			while(true) {
@@ -85,8 +85,8 @@ public class TcpClient {
 				//if(wr!=null) wr.close();
 				if(pw!=null) pw.close();
 				if(br!=null) br.close();
-//				if(out!=null) out.close();
-//				if(in!=null) in.close();
+				if(out!=null) out.close();
+				if(in!=null) in.close();
 				if(socket!=null)socket.close();
 			} catch (IOException e) {
 				e.printStackTrace();
