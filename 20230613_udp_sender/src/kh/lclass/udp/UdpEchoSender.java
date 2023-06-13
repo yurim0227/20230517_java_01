@@ -82,13 +82,11 @@ public class UdpEchoSender {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(br != null)
-				br.close();
+				if(br != null) br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			if(dSock!=null)
-				dSock.close();
+			if(dSock!=null) dSock.close();
 		}
 	}
 }
