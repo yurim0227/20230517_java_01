@@ -15,7 +15,7 @@ public class KeyCodeEx extends JFrame {
 		c.add(la);
 		setSize(300, 150);
 		setVisible(true);
-		c.setFocusable(true);
+		c.setFocusable(true);	// 키 입력을 받을 수 있도록 포커스를 준다.
 		c.requestFocus();
 	}
 

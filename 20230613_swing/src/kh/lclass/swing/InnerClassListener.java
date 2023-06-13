@@ -11,13 +11,13 @@ public class InnerClassListener extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
 		JButton btn = new JButton("Action");
-		btn.addActionListener(new MyActionListener());
+		btn.addActionListener(new MyActionListener3());
 		c.add(btn);
 		setSize(350, 150);
 		setVisible(true);
 	}
 
-	private class MyActionListener implements ActionListener {
+	private class MyActionListener3 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 			if (b.getText().equals("Action"))

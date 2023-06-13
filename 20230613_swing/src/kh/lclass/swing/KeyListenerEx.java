@@ -19,7 +19,7 @@ public class KeyListenerEx extends JFrame {
 		keyMessage[2] = new JLabel(" getKeyText() ");
 		for (int i = 0; i < keyMessage.length; i++) {
 			c.add(keyMessage[i]);
-			keyMessage[i].setOpaque(true);
+			keyMessage[i].setOpaque(true);	// 컴포넌트의 바탕색이 보이도록 하기 위해서는 컴포넌트가 불투명하기 지정될 필요 있음
 			keyMessage[i].setBackground(Color.YELLOW);
 		}
 		setSize(300, 150);
