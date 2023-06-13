@@ -33,7 +33,7 @@ public class UdpEchoSender {
 			while (true) {
 				// 전달할 메시지
 				System.out.println("입력>>");
-				String sendMsg = br.readLine();	//console 입려받음
+				String sendMsg = br.readLine();	//console 입력받음
 				// exit 입력하면 프로그램 끝내기
 				if(sendMsg.equals("exit")) {
 					break;
