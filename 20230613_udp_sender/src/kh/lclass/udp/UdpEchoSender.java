@@ -26,7 +26,8 @@ public class UdpEchoSender {
 		BufferedReader br = null;
 		try {
 			// DatagramSocket 객체 생성
-			dSock = new DatagramSocket(myPort);// 매개인자 없으면 자동port 번호 할당.지정하면 해당 포트 번호로 소켓 생성
+			//dSock = new DatagramSocket(myPort);// 매개인자 없으면 자동port 번호 할당.지정하면 해당 포트 번호로 소켓 생성
+			dSock = new DatagramSocket();
 			
 			// System.in이 기반스트림 역할
 			br = new BufferedReader(new InputStreamReader(System.in));

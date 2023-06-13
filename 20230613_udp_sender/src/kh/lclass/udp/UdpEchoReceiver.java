@@ -32,12 +32,12 @@ public class UdpEchoReceiver {
 //				String str2 = new String();
 				
 				// 전달받은 메시지 정보들
-				System.out.println("===전달받은 정보들=");
-				System.out.println(byteMsg.length);
-				System.out.println(receivedData.getData().length);
-				System.out.println(receivedData.getLength());
-				System.out.println(receivedData.getAddress());	// 전달받은 메시지의 발신IP
-				System.out.println(receivedData.getPort());	// 전달받은 메시지의 발신Port
+//				System.out.println("===전달받은 정보들=");
+//				System.out.println(byteMsg.length);
+//				System.out.println(receivedData.getData().length);
+//				System.out.println(receivedData.getLength());
+//				System.out.println(receivedData.getAddress());	// 전달받은 메시지의 발신IP
+//				System.out.println(receivedData.getPort());	// 전달받은 메시지의 발신Port
 				
 				String receivedStr = new String(receivedData.getData());
 				System.out.println("수신메시지 :"+ receivedStr);
