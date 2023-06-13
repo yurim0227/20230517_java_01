@@ -19,8 +19,8 @@ public class TcpServer {
 		ServerSocket ss = null;
 		Socket sc = null;
 		//List<Socket> scList = null;
-		InputStream in = null;
-		OutputStream out = null;
+//		InputStream in = null;
+//		OutputStream out = null;
 		BufferedReader br = null;
 		BufferedWriter wr = null;
 		try/* (ServerSocket ss=new ServerSocket(port);) */{
@@ -41,23 +41,36 @@ public class TcpServer {
 				System.out.println("클라이언트 Port:"+sc.getPort());	// 자동바뀜
 				System.out.println("클라이언트 IP:"+sc.getInetAddress().toString());	// 127.0.0.1
 				
+//				// 5.연결된 클라이언트와 입출력 스트림 생성
+//				in = sc.getInputStream();
+//				out = sc.getOutputStream();
+//				// 6.보조 스트림을 통해 성능 개선
+//				br = new BufferedReader(new InputStreamReader(in));
+//				//BufferedReader br = new BufferedReader(new InputStreamReader(sc.getInputStream()));
+//				wr = new BufferedWriter(new OutputStreamWriter(out));
+//				//BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(sc.getOutputStream()));
+				
 				// 5.연결된 클라이언트와 입출력 스트림 생성
-				in = sc.getInputStream();
-				out = sc.getOutputStream();
 				// 6.보조 스트림을 통해 성능 개선
-				br = new BufferedReader(new InputStreamReader(in));
-				//BufferedReader br = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-				wr = new BufferedWriter(new OutputStreamWriter(out));
-				//BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(sc.getOutputStream()));
+				br = new BufferedReader(new InputStreamReader(sc.getInputStream()));
+				wr = new BufferedWriter(new OutputStreamWriter(sc.getOutputStream()));
 				
 //				wr.write("반갑습니다.");
 //				wr.flush();
 				String receivedMsg = null;
-				while((receivedMsg =br.readLine()) != null ) {
+				// 방법1. do-while
+				do {
+					receivedMsg =br.readLine();
 					System.out.println("받은메시지: "+receivedMsg);
 					wr.write("메시지 잘 받았음.\n");
 					wr.flush();
-				}
+				}while(receivedMsg != null );
+				// 방법2. while
+//				while((receivedMsg =br.readLine()) != null ) {
+//					System.out.println("받은메시지: "+receivedMsg);
+//					wr.write("메시지 잘 받았음.\n");
+//					wr.flush();
+//				}
 			}
 //			String receivedMsg = br.readLine();
 //			System.out.println("받은메시지: "+receivedMsg);
@@ -68,8 +81,8 @@ public class TcpServer {
 				//Resource leak: '<unassigned Closeable value>' is never closed
 				if(wr!=null) wr.close();
 				if(br!=null) br.close();
-				if(out!=null) out.close();
-				if(in!=null) in.close();
+//				if(out!=null) out.close();
+//				if(in!=null) in.close();
 				if(sc!=null) sc.close();
 				if(ss!=null) ss.close();
 			} catch (IOException e) {
