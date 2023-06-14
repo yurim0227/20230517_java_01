@@ -145,6 +145,7 @@ public class ServerBackground {
 //					//msg = br.readLine();
 //					String msg = br.readLine();
 //					gui.appendMsg(msg);
+					//client map 모두에게 접속 정보 전달
 //					sendMessage(msg);
 //				} catch (IOException e) {
 //					e.printStackTrace();
