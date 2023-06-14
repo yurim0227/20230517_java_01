@@ -52,7 +52,8 @@ public class TestSwing extends JFrame{
 		
 		// event 등록 = Action 리스너 달기
 		btnSave.addActionListener(new MyActionListener());
-		txtName.addActionListener(new MyActionListener());
+		//txtName.addActionListener(new MyActionListener());
+		txtName.addActionListener(new MyNameActionListener());
 		
 		// component를 contentPane에 추가
 		contentPane.setLayout(new GridLayout(5,2,10,10));
@@ -75,12 +76,32 @@ public class TestSwing extends JFrame{
 	
 }
 
+class MyNameActionListener implements ActionListener{
+	
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("이건 언제 호출되지???");
+		System.out.println(e);
+		Object source = e.getSource();
+		if(source instanceof JTextField) {
+			System.out.println("JTextField에서 enter가 눌렀네요");
+			//if(((JTextField) source).getText().equals("")) {
+			//if(((JTextField) source).getText().length() == 0) {
+			if(((JTextField) source).getText().trim().length() == 0) {
+				((JTextField) source).setText("이름을 입력해주세요");
+			} else {
+				//((JTextField) source).setText(((JTextField) source).getText());
+				((JTextField) source).setText(((JTextField) source).getText().trim());
+			}
+		}
+	}
+	
+}
+
 class MyActionListener implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("이건 언제 호출되지???");
 		System.out.println(e);
-		
 		Object source = e.getSource();
 		if(source instanceof JButton) {
 			System.out.println("button 눌렀네요");
