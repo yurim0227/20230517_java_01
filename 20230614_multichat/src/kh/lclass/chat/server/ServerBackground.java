@@ -25,7 +25,7 @@ public class ServerBackground {
 	// client 여러명을 관리 : key:nickname, value:socket객체
 	//private Map<String, Socket> mapClients;
 	
-	// client 여러명을 관리 : key:nickname, value:OutputStream
+	// client 여러명을 관리 : key:nickname, value: OutputStream
 	private Map<String, BufferedWriter> mapClients = new HashMap<String, BufferedWriter>();
 	//map.put("ej", socket);
 	//map.put("hj", socket);
