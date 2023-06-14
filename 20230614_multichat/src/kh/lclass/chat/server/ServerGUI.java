@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 import kh.lclass.chat.client.ClientBackground;
 
-public class ServerGUI extends JFrame implements ActionListener {
+public class ServerGUI extends JFrame implements ActionListener{
 	// 컴파일 시 인식할 ServerGUI으로 만들어진 객체 고유 ID
 	private static final long serialVersionUID = 6085316166659427339L;
 	
