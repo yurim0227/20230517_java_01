@@ -129,6 +129,7 @@ public class ServerBackground {
 				// client outputStream 관리 map에 추가
 				mapClients.put(nickname, bw);
 				// client map 모두에게 접속 정보 전달
+				System.out.println("[ejkim]-1"+ nickname);
 				sendMessage(nickname+"님 접속했습니다.");
 			} catch (IOException e) {
 				e.printStackTrace();
